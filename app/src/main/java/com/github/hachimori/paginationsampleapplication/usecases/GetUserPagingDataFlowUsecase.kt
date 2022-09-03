@@ -13,8 +13,7 @@ import javax.inject.Singleton
 
 @Singleton
 class GetUserPagingDataFlowUsecase @Inject constructor(
-    private val gitHubRepository: GitHubRepository,
-    @IoDispatcher private val ioDispatcher: CoroutineDispatcher
+    private val gitHubRepository: GitHubRepository
 ) {
     fun getUserPagingDataFlow(): Flow<PagingData<User>> =
         gitHubRepository.getUserPagingDataFlow()

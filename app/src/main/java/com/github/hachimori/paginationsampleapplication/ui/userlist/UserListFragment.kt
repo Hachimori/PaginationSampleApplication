@@ -7,16 +7,14 @@ import android.view.ViewGroup
 import android.widget.LinearLayout.VERTICAL
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.hachimori.paginationsampleapplication.databinding.FragmentUserlistBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import timber.log.Timber
 
 @AndroidEntryPoint
 class UserListFragment : Fragment() {
@@ -47,8 +45,18 @@ class UserListFragment : Fragment() {
     }
 
     private fun bindAdapter() {
+        val userAdapter = UserAdapter()
+        val concatAdapter = ConcatAdapter(
+            userAdapter,
+            LoadStateFooterAdapter(
+                retry = {
+                    userAdapter.retry()
+                }
+            )
+        )
+
         with(binding.userList) {
-            adapter = UserAdapter()
+            adapter = concatAdapter
             layoutManager = LinearLayoutManager(context)
             addItemDecoration(
                 DividerItemDecoration(context, VERTICAL)
@@ -59,7 +67,8 @@ class UserListFragment : Fragment() {
     private fun initObservers() {
         viewLifecycleOwner.lifecycleScope.launch {
             userListViewModel.pagingDataFlow.collectLatest { pagingData ->
-                (binding.userList.adapter as UserAdapter).submitData(pagingData)
+                val concatAdapter = binding.userList.adapter as ConcatAdapter
+                (concatAdapter.adapters[0] as UserAdapter).submitData(pagingData)
             }
         }
     }

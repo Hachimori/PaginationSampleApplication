@@ -16,7 +16,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class UserListViewModel @Inject constructor(
-    private val getUserPagingDataFlowUsecase: GetUserPagingDataFlowUsecase
+    getUserPagingDataFlowUsecase: GetUserPagingDataFlowUsecase
 ) : ViewModel() {
 
     val pagingDataFlow: Flow<PagingData<User>> =

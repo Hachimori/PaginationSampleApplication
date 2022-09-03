@@ -7,7 +7,7 @@ GitHub user list using [Jetpack Paging 3](https://developer.android.com/topic/li
 
 There seems to be some strange scroll behavior ; items are populated while scrolling but they are sliding in from top/bottom:
 
-<video src="./.mov/scroll_behavior.mov" width="200"></video>
+![](.mov/scroll_behavior.gif)
 
 That behavior might be a known bug from [Google IssueTracker](https://issuetracker.google.com/issues/235319241).
 

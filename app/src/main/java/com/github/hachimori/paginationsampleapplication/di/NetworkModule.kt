@@ -1,6 +1,6 @@
 package com.github.hachimori.paginationsampleapplication.di
 
-import androidx.viewbinding.BuildConfig
+import com.github.hachimori.paginationsampleapplication.BuildConfig
 import com.github.hachimori.paginationsampleapplication.io.network.GitHubApiService
 import dagger.Module
 import dagger.Provides

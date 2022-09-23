@@ -1,0 +1,3 @@
+# Workaround for "Could not initialize plugin: interface org.mockito.plugins.MockMaker" error
+#   - https://stackoverflow.com/a/43385393/13665460
+mock-maker-inline

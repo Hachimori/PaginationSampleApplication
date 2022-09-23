@@ -27,7 +27,7 @@ class GitHubRemoteMediator @Inject constructor(
     override suspend fun load(loadType: LoadType, state: PagingState<Int, User>): MediatorResult {
         val since = when (loadType) {
             // When it does Refresh, it always start a new search, starting with since = 1.
-            LoadType.REFRESH -> 0
+            LoadType.REFRESH -> 1
 
             // In this app, it never prepend items because Refresh always load the first page.
             // So, it should return successful result with end of pagination.

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2019 The Android Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<!--
+  ~ Need to register HiltTestActivity which is used inside launchFragmentInHiltContainer() / createAndroidComposeRule<HiltTestActivity>()
+  ~ to use Hilt during testing.
+  ~
+  ~ This file is directly taken from following url (with modified package name):
+  ~   - https://github.com/android/architecture-samples/blob/views-hilt/app/src/debug/AndroidManifest.xml
+  ~
+  ~ Reference:
+  ~   - https://developer.android.com/training/dependency-injection/hilt-testing#launchfragment
+  ~   - https://stackoverflow.com/a/69765600/13665460
+  -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.hachimori.paginationsampleapplication">
+    <application>
+        <activity
+            android:name=".HiltTestActivity"
+            android:exported="false"  />
+    </application>
+</manifest>

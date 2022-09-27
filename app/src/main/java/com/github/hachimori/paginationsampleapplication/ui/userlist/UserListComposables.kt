@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.Button
 import androidx.compose.material.CircularProgressIndicator
@@ -74,6 +75,7 @@ fun UserItem(user: User) {
         AsyncImage(
             modifier = Modifier
                 .fillMaxHeight()
+                .widthIn(max = 100.dp)
                 .padding(8.dp),
             model = ImageRequest.Builder(LocalContext.current)
                 .data(user.avatarUrl)
